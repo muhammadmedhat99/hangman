@@ -1,0 +1,316 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Tahoma, Arial;
+}
+.container {
+    margin: 20px auto;
+    max-width: 1000px;
+}
+.row {
+    display: flex;
+}
+hr {
+    border: 1px solid #eee;
+}
+.game-info {
+    display: flex;
+}
+.game-info .game-name {
+    flex: 1;
+}
+.game-info .category {
+    flex: 1;
+    text-align: right;
+}
+.game-info .category span {
+    text-transform: capitalize;
+    color: #e91e63;
+    font-weight: bold;
+}
+.row .hangman-draw {
+    flex: 1;
+    background-color: #f8f8f8;
+    padding: 20px;
+    height: 324px;
+}
+@media (max-width: 767px) {
+    .row .hangman-draw {
+        padding: 10px;
+    }
+}
+.row .hangman-draw .the-draw {
+    width: 60px;
+    height: 280px;
+    border-bottom: 4px solid #222;
+    position: relative;
+    margin: auto;
+    left: -60px;
+    display: none;
+}
+.row .hangman-draw .the-stand {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #222;
+    display: none;
+}
+.row .hangman-draw .the-hang {
+    display: none;
+}
+.row .hangman-draw .the-hang::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    top: 15px;
+    left: 30px;
+    background-color: #222;
+}
+.row .hangman-draw .the-hang::after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    width: 4px;
+    top: 15px;
+    left: 130px;
+    background-color: #222;
+}
+.row .hangman-draw .the-robe {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 4px dashed #222;
+    left: 97px;
+    top: 45px;
+    display: none;
+}
+.row .hangman-draw .the-man .head {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid #222;
+    left: 107px;
+    top: 55px;
+    display: none;
+}
+.row .hangman-draw .the-man .body {
+    position: absolute;
+    left: 130px;
+    top: 102px;
+    height: 110px;
+    width: 4px;
+    background-color: #222;
+    display: none;
+}
+.row .hangman-draw .the-man .arms {
+    display: none;
+}
+.row .hangman-draw .the-man .arms::before,
+.row .hangman-draw .the-man .arms::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background-color: #222;
+    top: 140px;
+}
+.row .hangman-draw .the-man .arms::before {
+    transform: rotate(30deg);
+    left: 85px;
+}
+.row .hangman-draw .the-man .arms::after {
+    left: 130px;
+    transform: rotate(-30deg);
+}
+.row .hangman-draw .the-man .legs {
+    display: none;
+}
+.row .hangman-draw .the-man .legs::before,
+.row .hangman-draw .the-man .legs::after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 50px;
+    top: 220px;
+    background-color: #222;
+}
+.row .hangman-draw .the-man .legs::before {
+    left: 85px;
+    transform: rotate(-30deg);
+}
+.row .hangman-draw .the-man .legs::after {
+    left: 130px;
+    transform: rotate(30deg);
+}
+.hangman-draw.wrong-1 .the-draw {
+    display: block;
+}
+.hangman-draw.wrong-2 .the-stand {
+    display: block;
+}
+.hangman-draw.wrong-3 .the-hang {
+    display: block;
+}
+.hangman-draw.wrong-4 .the-robe {
+    display: block;
+}
+.hangman-draw.wrong-5 .the-man .head {
+    display: block;
+}
+.hangman-draw.wrong-6 .the-man .body {
+    display: block;
+}
+.hangman-draw.wrong-7 .the-man .arms {
+    display: block;
+}
+.hangman-draw.wrong-8 .the-man .legs {
+    display: block;
+}
+.letters {
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+}
+@media (max-width: 767px) {
+    .letters {
+        padding: 5px;
+    }
+}
+.letters.finished {
+    pointer-events: none;
+}
+.letters .letter-box {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    text-transform: uppercase;
+    background-color: #009688;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+}
+@media (max-width: 767px) {
+    .letters .letter-box {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        font-weight: 400;
+    }
+}
+.letters .letter-box.clicked {
+    background-color: #333;
+    opacity: 0.2;
+    pointer-events: none;
+}
+.letters-guess {
+    min-height: 104px;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+@media (max-width: 767px) {
+    .letters-guess {
+        padding: 10px 20px;
+        min-height: 60px;
+        line-height: 60px;
+        text-align: center;
+    }
+}
+.letters-guess span {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    margin-right: 10px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    text-transform: uppercase;
+    background-color: #fdfdfd;
+    border-bottom: 2px solid #333;
+    transition: 0.3s;
+}
+@media (max-width: 767px) {
+    .letters-guess span {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 5px;
+        font-size: 16px;
+        border-bottom: 1px solid #222;
+    }
+}
+.letters-guess .with-space {
+    border: none;
+    background: none;
+    position: relative;
+}
+
+.letters-guess .with-space::before {
+    content: "";
+    position: absolute;
+    background-color: #222;
+    width: 20px;
+    height: 4px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@media (max-width: 767px) {
+    .letters-guess .with-space::before {
+        position: absolute;
+        width: 10px;
+        height: 3px;
+    
+}
+.popup {
+    background-color: #009688;
+    width: 800px;
+    height: 300px;
+    position: absolute;
+    z-index: 100;
+    line-height: 300px;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+@media (max-width: 767px) {
+    .popup {
+        width: 360px;
+        font-size: 16px;
+    }
+}
+.popup button {
+    padding: 10px 20px;
+    background-color: #3f51b5;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
