@@ -314,3 +314,33 @@ hr {
     top: 50%;
     transform: translate(-50%, -50%);
 }
+.change {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.change .ch-button {
+    background-color: #009688;
+    width: fit-content;
+    margin: auto;
+    padding: 0px 15px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+.change .ch-button h4 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.change .ch-button i {
+    margin-bottom: 10px;
+}
+.change .ch-button:hover i {
+    animation: flib 1.5s infinite linear;
+}
+@keyframes flib {
+    0% {
+        transform: rotate(360deg);
+    }
+}

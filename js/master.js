@@ -243,3 +243,9 @@ function endGame() {
         window.location.reload();
     });
 }
+
+// change the qustion
+let changeQustion = document.querySelector(".ch-button");
+changeQustion.addEventListener("click", function () {
+    window.location.reload();
+});
